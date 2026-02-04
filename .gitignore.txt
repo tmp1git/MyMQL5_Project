@@ -16,5 +16,6 @@ Profiles/
 .DS_Store
 Thumbs.db
 
-# VS Code
+# VS Code & git
 .vscode/
+.git/
