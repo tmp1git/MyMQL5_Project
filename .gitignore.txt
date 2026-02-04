@@ -1,0 +1,20 @@
+# Build artifacts
+*.ex5
+*.ex4
+
+# MetaEditor backups
+*.mqh~
+*.mq5~
+*.bak
+
+# Logs & runtime
+Logs/
+Tester/
+Profiles/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
