@@ -6,7 +6,7 @@ This project documents a clean and reproducible workflow for developing MQL5 cod
 ## Folder Structure
 
 ### MT5 Environment (Execution)
-```
+```MT5 Environment (Execution)
 MQL5/
   Experts/
     MyProjects/        ← 自作EA（シンボリックリンク）
