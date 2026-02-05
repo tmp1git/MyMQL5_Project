@@ -19,7 +19,7 @@ MQL5/
     MyProjects/        <- Symbolic Link
       Common/
 ```
-MyProjects folders are symbolic links pointing to GitHub-managed directories.
+`MyProjects` folders are symbolic links pointing to GitHub-managed directories.
 
 ### GitHub Repository (Source Management)
 ```
@@ -38,7 +38,7 @@ MyMQL5Project/
 
 
 ## Symbolic Link Setup (Windows 11)
-Run PowerShell or Command Prompt as Administrator and execute:
+Run Command Prompt as Administrator and execute:
 
 ### Experts
 ```Experts
@@ -58,3 +58,44 @@ mklink /D "C:\MT5_Portable\MQL5\Include\MyProjects" "D:\MyMQL5Project\Include"
 
 To Verify:
 ```
+dir C:\MT5_Portable\MQL5\Experts\
+```
+```
+dir C:\MT5_Portable\MQL5\Indicators\
+```
+```
+dir C:\MT5_Portable\MQL5\Include\
+```
+`MyProjects` should appear as `<SYMLINKD>`.
+
+## .gitignore (Recommended)
+```
+# Build artifacts
+*.ex5
+*.ex4
+
+# MetaEditor backups
+*.mqh~
+*.mq5~
+*.bak
+
+# Logs & runtime
+Logs/
+Tester/
+Profiles/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+```
+
+
+## Development Flow
+1. Edit code in VS Code (in GitHub Repository (Source Management)).
+2. MT5 compiles via symbolic links.
+3. Test in MT5.
+4. Commit and push to GitHub.
+5. Use Copilot for review and improvement.
