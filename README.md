@@ -9,14 +9,14 @@ This project documents a clean and reproducible workflow for developing MQL5 cod
 ```MT5 Environment (Execution)
 MQL5/
   Experts/
-    MyProjects/        ← 自作EA（シンボリックリンク）
+    MyProjects/        <- Symbolic Link 
       MyEA1/
       MyEA2/
   Indicators/
-    MyProjects/        ← 自作インジケータ（シンボリックリンク）
+    MyProjects/        <- Symbolic Link
       MyIndicator1/
   Include/
-    MyProjects/        ← 共通ライブラリ（シンボリックリンク）
+    MyProjects/        <- Symbolic Link
       Common/
 ```
 MyProjects folders are symbolic links pointing to GitHub-managed directories.
