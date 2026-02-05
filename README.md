@@ -23,7 +23,7 @@ MQL5/
 
 ### GitHub Repository (Source Management)
 ```
-MyMQL5Project/
+MyMQL5_Project/
   Experts/
     MyEA1/
     MyEA2/
@@ -33,7 +33,7 @@ MyMQL5Project/
     Common/
   README.md
   .gitignore
-  MyMQL5Project.code-workspace
+  MyMQL5_Project.code-workspace
 ```
 
 
@@ -42,18 +42,18 @@ Run Command Prompt as Administrator and execute:
 
 ### Experts
 ```Experts
-mklink /D "C:\MT5_Portable\MQL5\Experts\MyProjects" "D:\MyMQL5Project\Experts"
+mklink /D "C:\MT5_Portable\MQL5\Experts\MyProjects" "D:\MyMQL5_Project\Experts"
 ```
 
 ### Indicators
 ```
-mklink /D "C:\MT5_Portable\MQL5\Indicators\MyProjects" "D:\MyMQL5Project\Indicators"
+mklink /D "C:\MT5_Portable\MQL5\Indicators\MyProjects" "D:\MyMQL5_Project\Indicators"
 ```
 
 
 ### Include
 ```
-mklink /D "C:\MT5_Portable\MQL5\Include\MyProjects" "D:\MyMQL5Project\Include"
+mklink /D "C:\MT5_Portable\MQL5\Include\MyProjects" "D:\MyMQL5_Project\Include"
 ```
 
 To Verify:
