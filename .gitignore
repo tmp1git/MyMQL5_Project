@@ -18,4 +18,5 @@ Thumbs.db
 
 # VS Code & git
 .vscode/
+*.code-wokspace
 .git/
