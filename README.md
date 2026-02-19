@@ -93,9 +93,13 @@ Thumbs.db
 
 ## VS code Setting
 ### Extention
-1. Install C/C++ for Visual Studio Code by Microsft.com
-2. Set "files.association" as below
-![vscode files.association setting](images/image.png)
+1. Install C/C++ for Visual Studio Code by Microsft.com.
+2. Set "files.association" as below.
+![vscode files.association setting](images/files_assosiation_setting.png)
+3. Set "compiler path" as below.
+![compiler path setting](images/compiler_path_setting.png)
+4. Set "Include path" as below.
+![include path setting](images/include_path_setting.png)
 
 ## Development Flow
 1. Edit code in VS Code (in GitHub Repository (Source Management)).

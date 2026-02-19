@@ -6,4 +6,7 @@ int OnInit() {
 
 void OnTick() {
    // TODO: Add logic
+
+   Print();
+
 }
