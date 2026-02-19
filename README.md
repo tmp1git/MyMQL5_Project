@@ -9,17 +9,17 @@ This project documents a clean and reproducible workflow for developing MQL5 cod
 ```MT5 Environment (Execution)
 MQL5/
   Experts/
-    MyProjects/        <- Symbolic Link 
+    My_Projects/        <- Junction Link 
       MyEA1/
       MyEA2/
   Indicators/
-    MyProjects/        <- Symbolic Link
+    My_Projects/        <- Junction Link
       MyIndicator1/
   Include/
-    MyProjects/        <- Symbolic Link
+    My_Projects/        <- Junction Link
       Common/
 ```
-`MyProjects` folders are symbolic links pointing to GitHub-managed directories.
+`MyProjects` folders are Junction links pointing to GitHub-managed directories.
 
 ### GitHub Repository (Source Management)
 ```
@@ -42,30 +42,30 @@ Run Command Prompt as Administrator and execute:
 
 ### Experts
 ```Experts
-mklink /J "C:\MT5_Portable\MQL5\Experts\MyProjects" "D:\MyMQL5_Project\Experts"
+mklink /J "C:\MT5\official_ver\MetaTrader 5\MQL5\Experts\My_Projects" "C:\MyMQL5_Project\Experts"
 ```
 
 ### Indicators
 ```
-mklink /J "C:\MT5_Portable\MQL5\Indicators\MyProjects" "D:\MyMQL5_Project\Indicators"
+mklink /J "C:\MT5\official_ver\MetaTrader 5\MQL5\Indicators\My_Projects" "C:\MyMQL5_Project\Indicators"
 ```
 
 ### Include
 ```
-mklink /J "C:\MT5_Portable\MQL5\Include\MyProjects" "D:\MyMQL5_Project\Include"
+mklink /J "C:\MT5\official_ver\MetaTrader 5\MQL5\Include\My_Projects" "C:\MyMQL5_Project\Include"
 ```
 
 To Verify:
 ```
-dir C:\MT5_Portable\MQL5\Experts\
+dir C:\MT5\official_ver\MetaTrader 5\MQL5\Experts\
 ```
 ```
-dir C:\MT5_Portable\MQL5\Indicators\
+dir C:\MT5\official_ver\MetaTrader 5\MQL5\Indicators\
 ```
 ```
-dir C:\MT5_Portable\MQL5\Include\
+dir C:\MT5\official_ver\MetaTrader 5\MQL5\Include\
 ```
-`MyProjects` should appear as `<JUNCTION>`.
+`My_Projects` should appear as `<JUNCTION>`.
 
 ## .gitignore (Recommended)
 ```
@@ -99,7 +99,7 @@ Thumbs.db
 
 ## Development Flow
 1. Edit code in VS Code (in GitHub Repository (Source Management)).
-2. MT5 compiles via symbolic links.
+2. MT5 compiles via Junction links.
 3. Test in MT5.
 4. Commit and push to GitHub.
 5. Use Copilot for review and improvement.
