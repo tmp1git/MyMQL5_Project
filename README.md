@@ -37,23 +37,22 @@ MyMQL5_Project/
 ```
 
 
-## Symbolic Link Setup (Windows 11)
+## Junction Link Setup (Windows 11)
 Run Command Prompt as Administrator and execute:
 
 ### Experts
 ```Experts
-mklink /D "C:\MT5_Portable\MQL5\Experts\MyProjects" "D:\MyMQL5_Project\Experts"
+mklink /J "C:\MT5_Portable\MQL5\Experts\MyProjects" "D:\MyMQL5_Project\Experts"
 ```
 
 ### Indicators
 ```
-mklink /D "C:\MT5_Portable\MQL5\Indicators\MyProjects" "D:\MyMQL5_Project\Indicators"
+mklink /J "C:\MT5_Portable\MQL5\Indicators\MyProjects" "D:\MyMQL5_Project\Indicators"
 ```
-
 
 ### Include
 ```
-mklink /D "C:\MT5_Portable\MQL5\Include\MyProjects" "D:\MyMQL5_Project\Include"
+mklink /J "C:\MT5_Portable\MQL5\Include\MyProjects" "D:\MyMQL5_Project\Include"
 ```
 
 To Verify:
@@ -66,7 +65,7 @@ dir C:\MT5_Portable\MQL5\Indicators\
 ```
 dir C:\MT5_Portable\MQL5\Include\
 ```
-`MyProjects` should appear as `<SYMLINKD>`.
+`MyProjects` should appear as `<JUNCTION>`.
 
 ## .gitignore (Recommended)
 ```
@@ -92,6 +91,11 @@ Thumbs.db
 .vscode/
 ```
 
+## VS code Setting
+### Extention
+1. Install C/C++ for Visual Studio Code by Microsft.com
+2. Set "files.association" as below
+![vscode files.association setting](images/image.png)
 
 ## Development Flow
 1. Edit code in VS Code (in GitHub Repository (Source Management)).
