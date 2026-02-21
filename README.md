@@ -98,6 +98,10 @@ Thumbs.db
 ![vscode files.association setting](images/files_assosiation_setting.png)
 3. Set "compiler path" as below.
 ![compiler path setting](images/compiler_path_setting.png)
+memo: If MetaEditor64.exe is set as the compiler path, MetaEditor will repeatedly open and close automatically and this problem will continue endlessly.
+To avoid this problem, use gcc as the compiler path and prepare an MQL5 dictionary file.
+
+
 4. Set "Include path" as below.
 ![include path setting](images/include_path_setting.png)
 
