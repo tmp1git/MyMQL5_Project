@@ -20,7 +20,7 @@ double GetBBWidth(string symbol, ENUM_TIMEFRAMES tf, int period = 20, double dev
    double upper = iBands(symbol, tf, period, deviation, 0, PRICE_CLOSE, MODE_UPPER, 0);
    double lower = iBands(symbol, tf, period, deviation, 0, PRICE_CLOSE, MODE_LOWER, 0);
    double mid   = iBands(symbol, tf, period, deviation, 0, PRICE_CLOSE, MODE_MAIN, 0);
-
+   
    if(mid == 0) return 0;
    return (upper - lower) / mid;
 }
