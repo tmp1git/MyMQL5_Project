@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     subgraph Windows_Host [Windows 11 Host]
         MT5[MetaTrader 5]
@@ -24,3 +25,4 @@ graph TD
     %% 操作の流れ
     G_CLI -- "Fix_Code" --> Companion
     Companion -- "User_Approve" --> Mapped_MQL5
+```
