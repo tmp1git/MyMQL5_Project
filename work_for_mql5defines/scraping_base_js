@@ -1,0 +1,37 @@
+//以下の手順で、MQL5リファレンスの表を #define 形式に変換します。
+
+//MQL5 リファレンスの定数ページを開きます。
+
+//例：時間枠 (ENUM_TIMEFRAMES)
+
+//ブラウザ（Chromeなど）で F12 キー を押してデベロッパーツールを開き、「Console」タブを選択します。
+
+//以下のコードをコピーして貼り付け、Enter を押してください。
+
+//===============
+
+
+
+(function() {
+    let output = "";
+    document.querySelectorAll("table tr").forEach(row => {
+        let cols = row.querySelectorAll("td");
+        if (cols.length >= 2) {
+            let name = cols[0].innerText.trim();
+            let secondCol = cols[1].innerText.trim();
+            let desc = (cols[2] ? cols[2].innerText.trim() : "");
+
+            if (name && name.match(/^[A-Z0-9_]+$/)) {
+                // 2列目が数字ならそれを値に、そうでないなら 0 を値にする
+                let isNumeric = !isNaN(secondCol) && secondCol !== "";
+                let value = isNumeric ? secondCol : "0";
+                let comment = isNumeric ? desc : secondCol + (desc ? " " + desc : "");
+                
+                output += `#define ${name} ${value} // ${comment}\n`;
+            }
+        }
+    });
+    console.log(output);
+    copy(output);
+    alert("日本語をコメントに回してコピーしました！");
+})();
