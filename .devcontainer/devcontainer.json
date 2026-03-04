@@ -16,11 +16,14 @@
       ]
     }
   },
-  "containerEnv": {
+"containerEnv": {
     "DISPLAY": ":0",
-    "BROWSER": "/usr/bin/xdg-open"
+    "BROWSER": "/usr/bin/xdg-open",
+    "LANG": "ja_JP.UTF-8",
+    "LANGUAGE": "ja_JP:ja",
+    "LC_ALL": "ja_JP.UTF-8"
   },
   //"postCreateCommand": "sudo apt-get update && sudo apt-get install -y wget gnupg           && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google.list' && sudo apt-get update && sudo apt-get install -y google-chrome-stable &&                                                                                                                                                                                                                                             curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt-get install -y nodejs && sudo npm install -g @google/gemini-cli",
   // gemini認証をコンテナ内のchromeで通すための設定追加
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y wget gnupg xdg-utils && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google.list' && sudo apt-get update && sudo apt-get install -y google-chrome-stable && sudo sed -i 's|Exec=/usr/bin/google-chrome-stable|Exec=/usr/bin/google-chrome-stable --no-sandbox --disable-dev-shm-usage|g' /usr/share/applications/google-chrome.desktop && xdg-settings set default-web-browser google-chrome.desktop && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt-get install -y nodejs && sudo npm install -g @google/gemini-cli"
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y wget gnupg xdg-utils locales fonts-noto-cjk && sudo locale-gen ja_JP.UTF-8 && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google.list' && sudo apt-get update && sudo apt-get install -y google-chrome-stable && sudo sed -i 's|Exec=/usr/bin/google-chrome-stable|Exec=/usr/bin/google-chrome-stable --no-sandbox --disable-dev-shm-usage|g' /usr/share/applications/google-chrome.desktop && xdg-settings set default-web-browser google-chrome.desktop && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt-get install -y nodejs && sudo npm install -g @google/gemini-cli"
 }
