@@ -1,0 +1,26 @@
+{
+  "name": "MQL5 Gemini Sandbox",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu", 
+  "mounts": [
+    {
+      "source": "/mnt/c/mt5/MyMQL5_Project",
+      "target": "/workspaces/mql5_src",
+      "type": "bind"
+    }
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "google.gemini-cli-companion",
+        "google.gemini-code-assist"
+      ]
+    }
+  },
+  "containerEnv": {
+    "DISPLAY": ":0",
+    "BROWSER": "/usr/bin/xdg-open"
+  },
+  //"postCreateCommand": "sudo apt-get update && sudo apt-get install -y wget gnupg           && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google.list' && sudo apt-get update && sudo apt-get install -y google-chrome-stable &&                                                                                                                                                                                                                                             curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt-get install -y nodejs && sudo npm install -g @google/gemini-cli",
+  // gemini認証をコンテナ内のchromeで通すための設定追加
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y wget gnupg xdg-utils && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google.list' && sudo apt-get update && sudo apt-get install -y google-chrome-stable && sudo sed -i 's|Exec=/usr/bin/google-chrome-stable|Exec=/usr/bin/google-chrome-stable --no-sandbox --disable-dev-shm-usage|g' /usr/share/applications/google-chrome.desktop && xdg-settings set default-web-browser google-chrome.desktop && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt-get install -y nodejs && sudo npm install -g @google/gemini-cli"
+}
