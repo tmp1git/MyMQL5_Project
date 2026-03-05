@@ -1,29 +1,60 @@
 {
   "name": "MQL5 Gemini Sandbox",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu", 
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  // WSLネイティブなディレクトリ構造に合わせてワークスペースを自動設定
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
   "mounts": [
     {
-      "source": "/mnt/c/mt5/MyMQL5_Project",
-      "target": "/workspaces/mql5_src",
+      // Windows側のMT5データフォルダをコンテナにマウント
+      "source": "/mnt/c/MT5/official_ver/MetaTrader 5/MQL5",
+      "target": "/mnt/mt5_mql5",
       "type": "bind"
+    },
+    // ↓ここからが画面出力（WSLg）に必須の設定
+    {
+      "source": "/tmp/.X11-unix",
+      "target": "/tmp/.X11-unix",
+      "type": "bind"
+    //},
+    //{
+    //  "source": "/mnt/wslg",
+    //  "target": "/mnt/wslg",
+    //  "type": "bind"
     }
   ],
+
+  "containerEnv": {
+    // WSLgを利用してChromeを表示するための設定
+    "DISPLAY": "${localEnv:DISPLAY}",
+    // Gemini CLIの認証などでブラウザを呼び出すための設定
+    "BROWSER": "/usr/bin/xdg-open",
+    // 日本語環境を維持するためのロケール設定
+    "LANG": "ja_JP.UTF-8",
+    "LANGUAGE": "ja_JP:ja",
+    "LC_ALL": "ja_JP.UTF-8",
+    // Chrome系のエンジンがサンドボックスで落ちるのを防ぐ
+    "ELECTRON_DISABLE_SANDBOX": "1" 
+  },
+
+  "runArgs": [
+    "--cap-add=SYS_ADMIN",   // Chromeのサンドボックス機能を有効にするための権限追加
+    "--shm-size=2g"             // 共有メモリを増設（Chromeのクラッシュ防止に極めて有効）
+    //"--device=/dev/dri:/dev/dri" // GPU支援をコンテナに渡す（画面描画の安定化）
+  ],
+
   "customizations": {
     "vscode": {
       "extensions": [
-        "google.gemini-cli-companion",
-        "google.gemini-code-assist"
+        "googlecloudtools.cloudcode", // Gemini連携に必要
+        "ms-python.python"            // Pythonスクリプト併用時用
       ]
     }
   },
-"containerEnv": {
-    "DISPLAY": ":0",
-    "BROWSER": "/usr/bin/xdg-open",
-    "LANG": "ja_JP.UTF-8",
-    "LANGUAGE": "ja_JP:ja",
-    "LC_ALL": "ja_JP.UTF-8"
-  },
-  //"postCreateCommand": "sudo apt-get update && sudo apt-get install -y wget gnupg           && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google.list' && sudo apt-get update && sudo apt-get install -y google-chrome-stable &&                                                                                                                                                                                                                                             curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt-get install -y nodejs && sudo npm install -g @google/gemini-cli",
-  // gemini認証をコンテナ内のchromeで通すための設定追加
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y wget gnupg xdg-utils locales fonts-noto-cjk && sudo locale-gen ja_JP.UTF-8 && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - && sudo sh -c 'echo \"deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google.list' && sudo apt-get update && sudo apt-get install -y google-chrome-stable && sudo sed -i 's|Exec=/usr/bin/google-chrome-stable|Exec=/usr/bin/google-chrome-stable --no-sandbox --disable-dev-shm-usage|g' /usr/share/applications/google-chrome.desktop && xdg-settings set default-web-browser google-chrome.desktop && curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt-get install -y nodejs && sudo npm install -g @google/gemini-cli"
+
+  // 起動時にデフォルトブラウザの設定を適用
+  "postCreateCommand": "xdg-settings set default-web-browser google-chrome.desktop"
 }
