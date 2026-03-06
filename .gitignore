@@ -20,3 +20,6 @@ Thumbs.db
 .vscode/
 *.code-workspace
 .git/
+
+# temporary file (memo for chat with Gemini CLI, etc.)
+*.tmp

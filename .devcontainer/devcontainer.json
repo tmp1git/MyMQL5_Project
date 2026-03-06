@@ -14,6 +14,12 @@
       "target": "/mnt/mt5_mql5",
       "type": "bind"
     },
+    {
+      // バックテスト結果と操作ログだけをマウント
+      "source": "/mnt/c/MT5/official_ver/MetaTrader 5/Tester",
+      "target": "/mnt/mt5_tester",
+      "type": "bind"
+    },
     // ↓ここからが画面出力（WSLg）に必須の設定
     {
       "source": "/tmp/.X11-unix",
